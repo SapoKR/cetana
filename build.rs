@@ -3,6 +3,12 @@ use std::fs;
 #[cfg(any(feature = "vulkan", feature = "mps", feature = "cuda"))]
 use std::{env, path::PathBuf, process::Command};
 
+#[cfg(feature = "rocm")]
+fn find_rocm_path() -> String {
+    // TODO I will write code later.
+    "/opt/rocm".to_string()
+}
+
 #[cfg(feature = "cuda")]
 fn find_cuda_path() -> String {
     // Linux
@@ -202,6 +208,13 @@ fn compile_metal_shaders() -> std::io::Result<()> {
 }
 
 fn main() {
+    
+    #[cfg(feature = "cuda")]
+    {
+        println!("cargo:rerun-if-changed=rocm/");
+        println!("cargo:rerun-if-changed=cuda-headers/");
+        println!("cargo:rerun-if-changed=CMakeLists.txt");
+    }
     #[cfg(feature = "cuda")]
     {
         println!("cargo:rerun-if-changed=cuda/");
