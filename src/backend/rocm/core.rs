@@ -39,5 +39,5 @@ const HIP_DEVICE_ATTR_COMPUTE_CAPBILITY_MAJOR: i32 = 25
 const HIP_DEVICE_ATTR_COMPUTE_CAPBILITY_MINOR: i32 = 63
 
 impl RocmDevice {
-    pub fn new(device_id: i32) -> Result<Self,
+    //pub fn new(device_id: i32) -> Result<Self,
 }
