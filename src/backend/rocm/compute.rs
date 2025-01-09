@@ -7,9 +7,9 @@ extern "C" {
     fn hipMemcpy(
         dst: *mut std::ffi::c_void,
         src: *const std::ffi::c_void,
-       sizeBytes: usize,
-       kind: hipMemcpyKind,
-    )
+        sizeBytes: usize,
+        kind: hipMemcpyKind,
+    ) -> i32;
     fn hipMemset(ptr: *mut std::ffi::c_void, value: i32, sizeBytes: usize) -> i32;
     fn hipDeviceSynchronize() -> i32;
 }

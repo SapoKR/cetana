@@ -14,11 +14,14 @@ extern "C" {
 }*/
 
 #[repr(C)]
-struct rocmDeviceProp {
+#[derive(Debug, Clone, Copy)]
+pub enum hipDeviceArch {
+    
+}
+
+#[repr(C)]
+struct HIP_SUCCESSDeviceProp {
     name: [i8; 256],
-    //uuid: hipUUID,
-    luid: [i8; 8],
-    //luidDeviceNodeMask ?
     totalGlobalMem: usize,
     sharedMemPerBlock: usize,
     regsPerBlock: i32,
@@ -28,9 +31,20 @@ struct rocmDeviceProp {
     maxThreadsDim: [i32; 3],
     maxGridSize: [i32; 3],
     clockRate: i32,
+    memoryClockRate: i32,
+    memoryBusWidth: i32,
     totalConstMem: usize,
     major: i32,
     minor: i32,
+    multiProcessorCount: i32,
+    l2CacheSize: i32,
+    maxThreadsPerMultiProcessor: i32,
+    computeMode: i32,
+    clockInstructionRate: i32,
+    arch: hipDeviceArch,
+    //uuid: hipUUID,
+    luid: [i8; 8],
+    //luidDeviceNodeMask ?
     // ...
 }
 
